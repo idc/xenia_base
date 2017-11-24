@@ -26,6 +26,10 @@ uint32_t ToPosixProtectFlags(PageAccess access) {
       return PROT_READ;
     case PageAccess::kReadWrite:
       return PROT_READ | PROT_WRITE;
+    case PageAccess::kExecuteOnly:
+      return PROT_EXEC;
+    case PageAccess::kExecuteRead:
+      return PROT_EXEC | PROT_READ;
     case PageAccess::kExecuteReadWrite:
       return PROT_READ | PROT_WRITE | PROT_EXEC;
     default:

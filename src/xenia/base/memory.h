@@ -33,7 +33,9 @@ enum class PageAccess {
   kNoAccess = 0,
   kReadOnly = 1 << 0,
   kReadWrite = kReadOnly | 1 << 1,
-  kExecuteReadWrite = kReadWrite | 1 << 2,
+  kExecuteOnly = 1 << 2,
+  kExecuteRead = kExecuteOnly | kReadOnly,
+  kExecuteReadWrite = kExecuteOnly | kReadWrite,
 };
 
 enum class AllocationType {

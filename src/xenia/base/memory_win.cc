@@ -42,6 +42,10 @@ DWORD ToWin32ProtectFlags(PageAccess access) {
       return PAGE_READONLY;
     case PageAccess::kReadWrite:
       return PAGE_READWRITE;
+    case PageAccess::kExecuteOnly:
+      return PAGE_EXECUTE;
+    case PageAccess::kExecuteRead:
+      return PAGE_EXECUTE_READ;
     case PageAccess::kExecuteReadWrite:
       return PAGE_EXECUTE_READWRITE;
     default:
@@ -63,6 +67,10 @@ PageAccess ToXeniaProtectFlags(DWORD access) {
       return PageAccess::kReadOnly;
     case PAGE_READWRITE:
       return PageAccess::kReadWrite;
+    case PAGE_EXECUTE:
+      return PageAccess::kExecuteOnly;
+    case PAGE_EXECUTE_READ:
+      return PageAccess::kExecuteRead;
     case PAGE_EXECUTE_READWRITE:
       return PageAccess::kExecuteReadWrite;
     default:

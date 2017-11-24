@@ -1,5 +1,7 @@
 A lightweight cross-platform/compiler compatibility library.
 
+[Split from Xenia](https://github.com/benvanik/xenia/tree/master/src/xenia/base).
+
 This library presupposes C++11/14 support. As more compilers get C++14 it will
 assume that.
 

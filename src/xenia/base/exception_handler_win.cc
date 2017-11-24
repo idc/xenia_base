@@ -64,6 +64,11 @@ LONG CALLBACK ExceptionHandlerCallback(PEXCEPTION_POINTERS ex_info) {
     if (handlers_[i].first(&ex, handlers_[i].second)) {
       // Exception handled.
       // TODO(benvanik): update all thread state? Dirty flags?
+      std::memcpy(&ex_info->ContextRecord->Xmm0, thread_context.xmm_registers,
+                  sizeof(thread_context.xmm_registers));
+      std::memcpy(&ex_info->ContextRecord->Rax, thread_context.int_registers,
+                  sizeof(thread_context.int_registers));
+      ex_info->ContextRecord->EFlags = thread_context.eflags;
       ex_info->ContextRecord->Rip = thread_context.rip;
       return EXCEPTION_CONTINUE_EXECUTION;
     }

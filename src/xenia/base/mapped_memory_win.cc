@@ -13,7 +13,6 @@
 #include <mutex>
 #include <vector>
 
-#include "xenia/base/logging.h"
 #include "xenia/base/math.h"
 #include "xenia/base/memory.h"
 #include "xenia/base/platform_win.h"
@@ -254,7 +253,6 @@ class Win32ChunkedMappedMemoryWriter : public ChunkedMappedMemoryWriter {
           }
           data_ += capacity_;
           if (!successful) {
-            XELOGE("Unable to find space for mapping");
             data_ = nullptr;
             return false;
           }

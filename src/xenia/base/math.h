@@ -34,6 +34,11 @@ T align(T value, T alignment) {
   return (value + alignment - 1) & ~(alignment - 1);
 }
 
+template <typename T>
+constexpr T align_const(T value, T alignment) {
+  return (value + alignment - 1) & ~(alignment - 1);
+}
+
 // Rounds the given number up to the next highest multiple.
 template <typename T, typename V>
 T round_up(T value, V multiple) {
